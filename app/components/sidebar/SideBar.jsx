@@ -15,25 +15,27 @@ import {CiMenuKebab, CiEdit} from 'react-icons/ci'
 
 export default function SideBar() {
   const menuItems = [
-    { id:1, name:'Dashboard', message:'new', link:'/', icon:<RxDashboard/> },
-    { id:2, name:'Report',  link:'/report', icon:<TbReportSearch/> },
-    { id:3, name:'Chart of Account',  link:'/chartofaccount', icon:<CgListTree/> },
-    { id:3, name:'Chart of Account View',  link:'/chartofaccountview', icon:<CgListTree/> },
-    { id:4, name:'Products', message:'new', icon:<TbBrandProducthunt/>, 
+    {cat:'main', name:'Dashboard', link:'/', icon:<RxDashboard/> },
+    {cat:'main', name:'Report', icon:<TbReportSearch/>, 
       subItems:[
-        {id:1, name:'Pharmacy', link:'/pharmacy',  icon:<GiMedicines/>},
-        {id:2, name:'Non-Pharmacy', message:'new', link:'/non-pharmacy', icon:<TbBabyBottle/>}
+        {cat:'sub', name:'Chart of Account', link:'/coa',  icon:<CgListTree/>},
+        {cat:'sub',  name:'Sales', link:'/sales', icon:<TbBabyBottle/>}
       ]},
-    { id:5, name:'Order', link:'/order', icon:<MdOutlinePlaylistAddCheckCircle/> },
-    { id:6, name:'Purchase', link:'/purchase', icon:<HiOutlineShoppingBag/> },
-    { id:7, name:'Setup', icon:<MdOutlineSettingsSuggest/>, 
+    {cat:'main', name:'Products', icon:<TbBrandProducthunt/>, 
       subItems:[
-        {id:1, name:'Category', link:'/category',  icon:<MdOutlineCategory/>},
-        {id:2, name:'Box', link:'/box', icon:<BsBox/>}
+        {cat:'sub',  name:'Pharmacy', link:'/pharmacy',  icon:<GiMedicines/>},
+        {cat:'sub',  name:'Non-Pharmacy', link:'/non-pharmacy', icon:<TbBabyBottle/>}
       ]},
-    { id:8, name:'Company', link:'/company', icon:<RiBuilding2Line/> },
-    { id:9, name:'Suplier', link:'/suplier', icon:<TbTruckDelivery/>},
-    { id:10, name:'Employe', link:'/employe', icon:<BsPeople/> }
+    {cat:'main', name:'Order', link:'/order', icon:<MdOutlinePlaylistAddCheckCircle/> },
+    {cat:'main', name:'Purchase', link:'/purchase', icon:<HiOutlineShoppingBag/> },
+    {cat:'main', name:'Setup', icon:<MdOutlineSettingsSuggest/>, 
+      subItems:[
+        {cat:'sub',  name:'Category', link:'/category',  icon:<MdOutlineCategory/>},
+        {cat:'sub',  name:'Box', link:'/box', icon:<BsBox/>}
+      ]},
+    {cat:'main', name:'Company', link:'/company', icon:<RiBuilding2Line/> },
+    {cat:'main', name:'Suplier', link:'/suplier', icon:<TbTruckDelivery/>},
+    {cat:'main', name:'Employe', link:'/employe', icon:<BsPeople/> }
   ];
   const {isSidebarOpen} = useContext(SidebarContext);
   return (
