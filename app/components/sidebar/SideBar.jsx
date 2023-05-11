@@ -1,21 +1,21 @@
 import React, {useContext} from 'react'
-import { SidebarContext } from '../contexts/SidebarContext'
+import { SidebarContext } from '../../contexts/SidebarContext'
 import {RxDashboard} from 'react-icons/rx'
 import {RiSearch2Line} from 'react-icons/ri'
 
 export default function SideBar() {
   const {isSidebarOpen} = useContext(SidebarContext);
   return (
-    <aside className={`${isSidebarOpen?'w-20':'w-72'} duration-300 min-h-screen px-2 bg-secondary text-primary text-xl`}>
+    <aside className={`${isSidebarOpen?'w-20':'w-72'} duration-300 min-h-screen px-2 bg-secondary text-primary`}>
       {/* -----------Brand Name----------- */}
-      <div className='h-14 px-3 border-b border-primary border-opacity-50 flex items-center'>
+      <div className='h-14 px-3 border-b border-primary border-opacity-50 flex items-center text-lg'>
           <div className='h-8 w-8 rounded-full bg-primary text-secondary font-bold text-center flex items-center justify-center'>
-              <span>P</span>
+              <span>A</span>
           </div>
           <h1 className={`${isSidebarOpen ? 'text-[0px]':'block'} pl-2 duration-300`}>ABID-IMS</h1>
       </div>
       {/* -----------User Name----------- */}
-      <div className='h-16 px-3 border-b border-primary border-opacity-50 flex items-center'>
+      <div className='h-14 px-3 border-b border-primary border-opacity-50 flex items-center text-lg'>
           <div className='h-8 w-8 rounded-full bg-primary text-secondary font-bold text-center flex items-center justify-center'>
               <span>P</span>
           </div>
@@ -32,10 +32,10 @@ export default function SideBar() {
         </div>
       </div>
       {/* -----------Sidebar Menu Items----------- */}
-      <div className='text-lg'>
+      <div className=''>
           <ul>
               <li className='h-10 my-2 flex items-center px-2 rounded hover:bg-secondary-hover'>
-                  <span className='w-8 flex items-center justify-center'><RxDashboard/></span>
+                  <span className='w-8 flex items-center justify-center'><RxDashboard size={22}/></span>
                   <span className={`${isSidebarOpen ? 'text-[0px]':'block'} pl-2 duration-300`}>Dashboard</span>
               </li>
           </ul>

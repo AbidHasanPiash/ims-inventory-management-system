@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React, { useState, useContext } from 'react';
-import { SidebarContext } from '../contexts/SidebarContext';
+import { SidebarContext } from '../../contexts/SidebarContext';
 import { fullScreen } from './FullScreen'
 import { RiMenuFoldFill, RiMenuUnfoldFill, RiMessageLine, RiSearch2Line } from 'react-icons/ri'
 import { BiBell, BiExpand, BiCollapse } from 'react-icons/bi'
@@ -11,10 +11,10 @@ export default function Header() {
     return (
         <header className='w-full h-14 bg-gray-200'>
             <div className='flex items-center justify-between px-6 py-3 text-xl text-gray-700'>
-                    <div className='relative flex items-center space-x-4'>
-                        <div onClick={()=>setSidebarOpen(!isSidebarOpen)}>
+                    <div className='flex items-center space-x-4'>
+                        <button onClick={()=>setSidebarOpen(!isSidebarOpen)}>
                             {isSidebarOpen ? <RiMenuFoldFill/> : <RiMenuUnfoldFill/>}
-                        </div>
+                        </button>
                         <Link href={'/'}>Home</Link>
                     </div>
                     <div className='flex space-x-8'>

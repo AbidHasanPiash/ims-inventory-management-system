@@ -1,8 +1,8 @@
 "use client"
 import './globals.css';
 import { SidebarContext } from './contexts/SidebarContext';
-import SideBar from './components/SideBar';
-import Header from './components/Header';
+import SideBar from './components/sidebar/SideBar';
+import Header from './components/header/Header';
 import { useState } from 'react';
 
 export const metadata = {
