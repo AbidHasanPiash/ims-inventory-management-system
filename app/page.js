@@ -1,10 +1,72 @@
-import Image from "next/image";
+import {HiArrowCircleRight} from 'react-icons/hi'
+import {FiShoppingCart} from 'react-icons/fi'
+import {BiPurchaseTagAlt} from 'react-icons/bi'
+import {MdOutlineAssignmentReturned, MdAddTask} from 'react-icons/md'
 
 export default function Home() {
   return (
-    <div className="flex w-full h-full items-center justify-center border">
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px]">
-        <h1 className="text-5xl">Dashboard</h1>
+    <div className="w-full h-full">
+      <div className="grid xl:grid-cols-4 grid-cols-2 gap-3 p-3">
+        <div className="bg-sky-500 rounded-lg text-white shadow">
+           <div>
+                <div className="group flex items-center justify-between p-2">
+                    <div>
+                        <h1 className="text-4xl font-bold">240</h1>
+                        <p className="py-4">Customers surves</p>
+                    </div>
+                    <FiShoppingCart size={80} className="text-sky-900 pr-2 opacity-40 duration-300 group-hover:scale-110"/>
+                </div>
+                <div className="flex items-center rounded-b-lg justify-center space-x-3 bg-sky-600 hover:bg-sky-700 p-1 cursor-pointer">
+                    <button>More info</button>
+                    <HiArrowCircleRight size={20}/>
+                </div>
+           </div>
+        </div>
+        <div className="bg-green-500 rounded-lg text-white shadow">
+           <div>
+                <div className="group flex items-center justify-between p-2">
+                    <div>
+                        <h1 className="text-4xl font-bold">1420</h1>
+                        <p className="py-4">Items Sold</p>
+                    </div>
+                    <BiPurchaseTagAlt size={80} className="text-green-900 pr-2 opacity-40 duration-300 group-hover:scale-110"/>
+                </div>
+                <div className="flex items-center rounded-b-lg justify-center space-x-3 bg-green-600 hover:bg-green-700 p-1 cursor-pointer">
+                    <button>More info</button>
+                    <HiArrowCircleRight size={20}/>
+                </div>
+           </div>
+        </div>
+        <div className="bg-red-500 rounded-lg text-white shadow">
+           <div>
+                <div className="group flex items-center justify-between p-2">
+                    <div>
+                        <h1 className="text-4xl font-bold">4</h1>
+                        <p className="py-4">Returns</p>
+                    </div>
+                    <MdOutlineAssignmentReturned size={80} className="text-red-900 pr-2 opacity-40 duration-300 group-hover:scale-110"/>
+                </div>
+                <div className="flex items-center rounded-b-lg justify-center space-x-3 bg-red-600 hover:bg-red-700 p-1 cursor-pointer">
+                    <button>More info</button>
+                    <HiArrowCircleRight size={20}/>
+                </div>
+           </div>
+        </div>
+        <div className="bg-yellow-500 rounded-lg text-white shadow">
+           <div>
+                <div className="group flex items-center justify-between p-2">
+                    <div>
+                        <h1 className="text-4xl font-bold">340</h1>
+                        <p className="py-4">Items Added</p>
+                    </div>
+                    <MdAddTask size={80} className="text-yellow-900 pr-2 opacity-40 duration-300 group-hover:scale-110"/>
+                </div>
+                <div className="flex items-center rounded-b-lg justify-center space-x-3 bg-yellow-600 hover:bg-yellow-700 p-1 cursor-pointer">
+                    <button>More info</button>
+                    <HiArrowCircleRight size={20}/>
+                </div>
+           </div>
+        </div>
       </div>
     </div>
   );

@@ -1,5 +1,9 @@
-import SideBar from '@/components/sideBar'
-import './globals.css'
+"use client"
+import './globals.css';
+import { SidebarContext } from './contexts/SidebarContext';
+import SideBar from './components/SideBar';
+import Header from './components/Header';
+import { useState } from 'react';
 
 export const metadata = {
   title: 'IMS | Dashboard',
@@ -7,13 +11,22 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }) {
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
   return (
     <html lang="en">
-      <body className='flex'>
-        <SideBar/>
-        <main className='w-full min-h-screen'>
-          {children}
-        </main>
+      <head>
+        <title>{metadata.title}</title>
+      </head>
+      <body className='flex bg-primary text-secondary'>
+        <SidebarContext.Provider value={{isSidebarOpen, setSidebarOpen}}>
+          <SideBar/>
+          <main className='w-full min-h-screen'>
+            <Header/>
+            <div className=''>
+              {children}
+            </div>
+          </main>
+        </SidebarContext.Provider>
       </body>
     </html>
   )
