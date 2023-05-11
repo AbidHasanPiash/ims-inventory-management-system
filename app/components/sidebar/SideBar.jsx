@@ -1,9 +1,40 @@
 import React, {useContext} from 'react'
 import { SidebarContext } from '../../contexts/SidebarContext'
+import MenuItems from './MenuItems'
+
+//React Icons
+import {HiOutlineLogout, HiOutlineShoppingBag} from 'react-icons/hi'
+import {RiSearch2Line, RiBuilding2Line} from 'react-icons/ri'
 import {RxDashboard} from 'react-icons/rx'
-import {RiSearch2Line} from 'react-icons/ri'
+import {GiMedicines} from 'react-icons/gi'
+import {CgListTree} from 'react-icons/cg'
+import {BsBox, BsPeople} from 'react-icons/bs'
+import {MdOutlinePlaylistAddCheckCircle, MdOutlineSettingsSuggest, MdOutlineCategory} from 'react-icons/md'
+import {TbReportSearch, TbBrandProducthunt, TbBabyBottle, TbTruckDelivery} from 'react-icons/tb'
+import {CiMenuKebab, CiEdit} from 'react-icons/ci'
 
 export default function SideBar() {
+  const menuItems = [
+    { id:1, name:'Dashboard', message:'new', link:'/', icon:<RxDashboard/> },
+    { id:2, name:'Report',  link:'/report', icon:<TbReportSearch/> },
+    { id:3, name:'Chart of Account',  link:'/chartofaccount', icon:<CgListTree/> },
+    { id:3, name:'Chart of Account View',  link:'/chartofaccountview', icon:<CgListTree/> },
+    { id:4, name:'Products', message:'new', icon:<TbBrandProducthunt/>, 
+      subItems:[
+        {id:1, name:'Pharmacy', link:'/pharmacy',  icon:<GiMedicines/>},
+        {id:2, name:'Non-Pharmacy', message:'new', link:'/non-pharmacy', icon:<TbBabyBottle/>}
+      ]},
+    { id:5, name:'Order', link:'/order', icon:<MdOutlinePlaylistAddCheckCircle/> },
+    { id:6, name:'Purchase', link:'/purchase', icon:<HiOutlineShoppingBag/> },
+    { id:7, name:'Setup', icon:<MdOutlineSettingsSuggest/>, 
+      subItems:[
+        {id:1, name:'Category', link:'/category',  icon:<MdOutlineCategory/>},
+        {id:2, name:'Box', link:'/box', icon:<BsBox/>}
+      ]},
+    { id:8, name:'Company', link:'/company', icon:<RiBuilding2Line/> },
+    { id:9, name:'Suplier', link:'/suplier', icon:<TbTruckDelivery/>},
+    { id:10, name:'Employe', link:'/employe', icon:<BsPeople/> }
+  ];
   const {isSidebarOpen} = useContext(SidebarContext);
   return (
     <aside className={`${isSidebarOpen?'w-20':'w-72'} duration-300 min-h-screen px-2 bg-secondary text-primary`}>
@@ -34,10 +65,9 @@ export default function SideBar() {
       {/* -----------Sidebar Menu Items----------- */}
       <div className=''>
           <ul>
-              <li className='h-10 my-2 flex items-center px-2 rounded hover:bg-secondary-hover'>
-                  <span className='w-8 flex items-center justify-center'><RxDashboard size={22}/></span>
-                  <span className={`${isSidebarOpen ? 'text-[0px]':'block'} pl-2 duration-300`}>Dashboard</span>
-              </li>
+              {menuItems.map((item, i)=>(
+                <MenuItems key={i} item={item}/>
+              ))}
           </ul>
       </div>
     </aside>

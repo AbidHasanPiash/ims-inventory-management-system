@@ -7,10 +7,10 @@ export default function Home() {
   return (
     <div className="w-full h-full">
         <div className="grid xl:grid-cols-4 grid-cols-2 gap-3 p-3">
-            <InfoCard color='sky' number='240' title='Customers surves' icon={FiShoppingCart} link='#'/>
-            <InfoCard color='green' number='1420' title='Items Sold' icon={BiPurchaseTagAlt} link='#'/>
-            <InfoCard color='red' number='4' title='Returns' icon={MdOutlineAssignmentReturned} link='#'/>
-            <InfoCard color='yellow' number='340' title='Items Added' icon={MdAddTask} link='#'/>
+            <InfoCard color='#345995' number={241} title='Customers surves' icon={FiShoppingCart} link='#'/>
+            <InfoCard color='#03CEA4' number={1420} title='Items Sold' icon={BiPurchaseTagAlt} link='#'/>
+            <InfoCard color='#FB4D3D' number={4} title='Returns' icon={MdOutlineAssignmentReturned} link='#'/>
+            <InfoCard color='#EAC435' number={344} title='Items Added' icon={MdAddTask} link='#'/>
         </div>
     </div>
   );
