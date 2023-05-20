@@ -5,11 +5,14 @@ import { SidebarContext } from '../../contexts/SidebarContext';
 import { fullScreen } from './FullScreen'
 import { RiMenuFoldFill, RiMenuUnfoldFill, RiMessageLine, RiSearch2Line } from 'react-icons/ri'
 import { BiBell, BiExpand, BiCollapse } from 'react-icons/bi'
+import Notification from '../dashboard/Notification';
 
 export default function Header() {
     const path = usePathname ();
     const [isFullScreen, setFullScreen] = useState(false);
     const {isSidebarOpen, setSidebarOpen, headerTab, handleRemoveTab} = useContext(SidebarContext);
+    const [isNotiOpen, setIsNotiOpen] = useState(false);
+    console.log(isNotiOpen);
     return (
         <header className='w-full h-14 bg-gray-200 flex items-center justify-center'>
             <div className='w-full flex justify-between'>
@@ -36,7 +39,8 @@ export default function Header() {
                 <div className='flex items-center justify-center space-x-3 px-6 bg-blue-500/20 rounded-l-full cursor-pointer'>
                     <button className='flex items-center justify-center w-10 h-10 hover:bg-blue-400/30 rounded-lg transition-colors duration-500'> <RiSearch2Line size={20}/> </button>
                     <button className='flex items-center justify-center w-10 h-10 hover:bg-blue-400/30 rounded-lg transition-colors duration-500'> <RiMessageLine size={20}/> </button>
-                    <button 
+                    <button
+                        onClick={()=>setIsNotiOpen((p)=>!p)}
                         className='flex items-center justify-center w-10 h-10 hover:bg-blue-400/30 rounded-lg transition-colors duration-500'> 
                         <BiBell size={20}/> 
                     </button>
@@ -47,6 +51,7 @@ export default function Header() {
                     </button>
                 </div>
             </div>
+            <Notification isNotiOpen={isNotiOpen}/>
         </header>
     )
 }
