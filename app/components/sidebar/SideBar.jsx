@@ -1,19 +1,20 @@
-import React, {useContext} from 'react'
+import Link from 'next/link'
+import React, {useContext, useState} from 'react'
 import { SidebarContext } from '../../contexts/SidebarContext'
 import MenuItems from './MenuItems'
 
 //React Icons
-import {HiOutlineLogout, HiOutlineShoppingBag} from 'react-icons/hi'
-import {RiSearch2Line, RiBuilding2Line} from 'react-icons/ri'
+import {HiOutlineShoppingBag} from 'react-icons/hi'
+import {RiBuilding2Line} from 'react-icons/ri'
 import {RxDashboard} from 'react-icons/rx'
 import {GiMedicines} from 'react-icons/gi'
 import {CgListTree} from 'react-icons/cg'
 import {BsBox, BsPeople} from 'react-icons/bs'
 import {MdOutlinePlaylistAddCheckCircle, MdOutlineSettingsSuggest, MdOutlineCategory} from 'react-icons/md'
 import {TbReportSearch, TbBrandProducthunt, TbBabyBottle, TbTruckDelivery} from 'react-icons/tb'
-import {CiMenuKebab, CiEdit} from 'react-icons/ci'
 
 export default function SideBar() {
+  const {isSidebarOpen} = useContext(SidebarContext);
   const menuItems = [
     {cat:'main', name:'Dashboard', link:'/', icon:<RxDashboard/> },
     {cat:'main', name:'Report', icon:<TbReportSearch/>, 
@@ -37,41 +38,30 @@ export default function SideBar() {
     {cat:'main', name:'Suplier', link:'/suplier', icon:<TbTruckDelivery/>},
     {cat:'main', name:'Employe', link:'/employe', icon:<BsPeople/> }
   ];
-  const {isSidebarOpen} = useContext(SidebarContext);
   return (
-    <aside className={`${isSidebarOpen?'w-20':'w-72'} duration-300 min-h-screen px-2 bg-secondary text-primary`}>
-      {/* -----------Brand Name----------- */}
-      <div className='h-14 px-3 border-b border-primary border-opacity-50 flex items-center text-lg'>
-          <div className='h-8 w-8 rounded-full bg-primary text-secondary font-bold text-center flex items-center justify-center'>
-              <span>A</span>
-          </div>
-          <h1 className={`${isSidebarOpen ? 'text-[0px]':'block'} pl-2 duration-300`}>ABID-IMS</h1>
-      </div>
-      {/* -----------User Name----------- */}
-      <div className='h-14 px-3 border-b border-primary border-opacity-50 flex items-center text-lg'>
-          <div className='h-8 w-8 rounded-full bg-primary text-secondary font-bold text-center flex items-center justify-center'>
-              <span>P</span>
-          </div>
-          <h1 className={`${isSidebarOpen ? 'text-[0px]':'block'} pl-2 duration-300`}>User id</h1>
-      </div>
-      {/* -----------Search Section----------- */}
-      <div className={`flex items-center justify-start border border-primary border-opacity-50 my-3 rounded`}>
-        <input 
-          type="text" 
-          placeholder='Search' 
-          className={`${isSidebarOpen ? 'hidden':'block'} w-full h-9 bg-secondary-hover rounded-l outline-none pl-3 border-r border-primary border-opacity-50 focus:ring-1`}/>
-        <div className='w-14 h-9 flex items-center justify-center'>
-          <RiSearch2Line />
+    <nav className={`${isSidebarOpen?'w-[60px] hover:w-[300px]':'w-[300px]'} h-screen bg-secondary text-primary overflow-hidden transition-all duration-200`}>
+        <div className='h-1/6'>
+            {/* company name */}
+            <div className='flex whitespace-nowrap border-b border-black'>
+                <div className='flex items-center justify-center min-w-[60px] h-[60px]'>
+                    <span className='w-[40px] h-[40px] flex items-center justify-center text-xl text-white bg-slate-500 rounded-full'>A</span>
+                </div>
+                <span className='h-[60px] flex items-center uppercase tracking-widest'>Company</span>
+            </div>
+            {/* user name */}
+            <div className='flex whitespace-nowrap border-b border-black'>
+                <div className='flex items-center justify-center min-w-[60px] h-[60px]'>
+                    <span className='w-[40px] h-[40px] flex items-center justify-center text-xl text-white bg-slate-500 rounded-full'>A</span>
+                </div>
+                <span className='h-[60px] flex items-center uppercase tracking-widest'>User</span>
+            </div>
         </div>
-      </div>
-      {/* -----------Sidebar Menu Items----------- */}
-      <div className=''>
-          <ul>
-              {menuItems.map((item, i)=>(
+        {/* menu list items */}
+        <ul className='h-5/6 select-none overflow-y-auto scrollbar-none hover:scrollbar-thin scrollbar-thumb-orange-600'>
+            {menuItems.map((item, i)=>(
                 <MenuItems key={i} item={item}/>
               ))}
-          </ul>
-      </div>
-    </aside>
+        </ul>
+    </nav>
   )
 }

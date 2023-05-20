@@ -1,46 +1,53 @@
 'use client';
 import Link from 'next/link';
-import { useContext, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { usePathname  } from 'next/navigation';
 import {RiArrowLeftSLine} from 'react-icons/ri'
-import { SidebarContext } from '@/app/contexts/SidebarContext'
 
 export default function MenuItems({item}) {
     const path = usePathname ();
-    const {isSidebarOpen} = useContext(SidebarContext);
+    const [activeItem, setActiveItem] = useState(path);
     const [isExpand, setExpand] = useState(false);
-    if (!item.subItems) {
-        return (
-            <li className={`${item.cat === 'sub' && 'pl-2'}`}>
-                <Link
-                    href={item?.link} 
-                    className='h-10 my-2 px-2 rounded hover:bg-secondary-hover flex items-center justify-between cursor-pointer'>
-                    <div className='flex items-center'>
-                        <i className='w-8 flex items-center justify-center text-xl'>{item.icon}</i>
-                        <span className={`${isSidebarOpen ? 'text-[0px]':'block'} pl-2 duration-300 select-none`}>{item.name}</span>
-                    </div>
-                </Link>
-            </li>
-        )
-    }
-    else{ //Items with subitems
-        return(
-            <li className={`${isExpand && 'ring-1 ring-secondary-hover rounded'}`}>
-                <div
-                    onClick={()=>setExpand(!isExpand)} 
-                    className='h-10 my-2 px-2 rounded hover:bg-secondary-hover flex items-center justify-between cursor-pointer'
-                >
-                    <div className='flex items-center'>
-                        <i className='w-8 flex items-center justify-center text-xl'>{item.icon}</i>
-                        <span className={`${isSidebarOpen ? 'text-[0px]':'block'} pl-2 duration-300 select-none`}>{item.name}</span>
-                    </div>
-                    <span className={`${isExpand && '-rotate-90'} duration-300`}><RiArrowLeftSLine size={20}/></span>
+    useEffect(()=>{
+        setActiveItem(path);
+    },[path]);
+  if (!item.subItems) {
+    return(
+        <li className={`${activeItem === item.link ? 'border-l-4 border-blue-500 bg-blue-500/20 text-white' : 'hover:bg-secondary-hover'}`}>
+            <Link href={`${item?.link}`} className='flex whitespace-nowrap'>
+                <div className='flex items-center justify-center min-w-[60px] h-[60px]'>
+                    <span className='w-[40px] h-[40px] flex items-center justify-center text-xl text-white bg-slate-500 rounded-xl'>{item.icon}</span>
                 </div>
+                <span className='h-[60px] flex items-center uppercase tracking-widest'>{item.name}</span>
+            </Link>
+        </li>
+    )
+  }
+  else{
+    return(
+        <li className={`${isExpand?'h-fit':'h-[60px]'} overflow-hidden transition-all duration-300`}>
+            <div onClick={()=>setExpand((p)=>!p)} className='flex items-center justify-between pr-3 hover:bg-secondary-hover cursor-pointer'>
+                <span className='flex whitespace-nowrap'>
+                    <div className='flex items-center justify-center min-w-[60px] h-[60px]'>
+                        <span className='w-[40px] h-[40px] flex items-center justify-center text-xl text-white bg-slate-500 rounded-xl'>{item.icon}</span>
+                    </div>
+                    <span className='h-[60px] flex items-center uppercase tracking-widest'>{item.name}</span>
+                </span>
+                <span className={`${isExpand && '-rotate-90'} duration-300`}><RiArrowLeftSLine size={22}/></span>
+            </div>
+            <ul className='bg-zinc-800'>
                 {isExpand && item.subItems.map((sub, index)=>(
-                <MenuItems key={index} item = {sub} />
+                    <li key={index} className={`${activeItem === sub.link ? 'border-l-4 border-blue-500 bg-blue-500/20 text-white' : 'hover:bg-secondary-hover'}`}>
+                        <Link href={`${sub?.link}`} className='flex whitespace-nowrap'>
+                            <div className='flex items-center justify-center min-w-[60px] h-[60px]'>
+                                <span className='w-[40px] h-[40px] flex items-center justify-center text-xl text-white bg-slate-500 rounded-xl'>{sub.icon}</span>
+                            </div>
+                            <span className='h-[60px] flex items-center uppercase tracking-widest'>{sub.name}</span>
+                        </Link>
+                    </li>
                 ))}
-            </li>
-        )
-    }
-  
+            </ul>
+        </li>
+    )
+  }
 }

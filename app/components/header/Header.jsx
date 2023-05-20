@@ -12,7 +12,7 @@ export default function Header() {
         <header className='w-full h-14 bg-gray-200'>
             <div className='flex items-center justify-between px-6 py-3 text-xl text-gray-700'>
                     <div className='flex items-center space-x-4'>
-                        <button onClick={()=>setSidebarOpen(!isSidebarOpen)}>
+                        <button onClick={()=>setSidebarOpen((prev)=>!prev)}>
                             {isSidebarOpen ? <RiMenuFoldFill/> : <RiMenuUnfoldFill/>}
                         </button>
                         <Link href={'/'}>Home</Link>
