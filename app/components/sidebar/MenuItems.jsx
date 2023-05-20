@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { usePathname  } from 'next/navigation';
 import {RiArrowLeftSLine} from 'react-icons/ri'
 
-export default function MenuItems({item}) {
+export default function MenuItems({item, handlePushTab}) {
     const path = usePathname ();
     const [activeItem, setActiveItem] = useState(path);
     const [isExpand, setExpand] = useState(false);
@@ -13,7 +13,7 @@ export default function MenuItems({item}) {
     },[path]);
   if (!item.subItems) {
     return(
-        <li className={`${activeItem === item.link ? 'border-l-4 border-blue-500 bg-blue-500/20 text-white' : 'hover:bg-secondary-hover'}`}>
+        <li onClick={()=>handlePushTab(item.name, item.link)} className={`${activeItem === item.link ? 'border-l-4 border-blue-500 bg-blue-500/20 text-white' : 'hover:bg-secondary-hover'}`}>
             <Link href={`${item?.link}`} className='flex whitespace-nowrap'>
                 <div className='flex items-center justify-center min-w-[60px] h-[60px]'>
                     <span className='w-[40px] h-[40px] flex items-center justify-center text-xl text-white bg-slate-500 rounded-xl'>{item.icon}</span>
@@ -37,7 +37,7 @@ export default function MenuItems({item}) {
             </div>
             <ul className='bg-zinc-800'>
                 {isExpand && item.subItems.map((sub, index)=>(
-                    <li key={index} className={`${activeItem === sub.link ? 'border-l-4 border-blue-500 bg-blue-500/20 text-white' : 'hover:bg-secondary-hover'}`}>
+                    <li key={index} onClick={()=>handlePushTab(sub.name, sub.link)} className={`${activeItem === sub.link ? 'border-l-4 border-blue-500 bg-blue-500/20 text-white' : 'hover:bg-secondary-hover'}`}>
                         <Link href={`${sub?.link}`} className='flex whitespace-nowrap'>
                             <div className='flex items-center justify-center min-w-[60px] h-[60px]'>
                                 <span className='w-[40px] h-[40px] flex items-center justify-center text-xl text-white bg-slate-500 rounded-xl'>{sub.icon}</span>

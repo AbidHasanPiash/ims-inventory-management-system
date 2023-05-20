@@ -14,7 +14,7 @@ import {MdOutlinePlaylistAddCheckCircle, MdOutlineSettingsSuggest, MdOutlineCate
 import {TbReportSearch, TbBrandProducthunt, TbBabyBottle, TbTruckDelivery} from 'react-icons/tb'
 
 export default function SideBar() {
-  const {isSidebarOpen} = useContext(SidebarContext);
+  const {isSidebarOpen, handlePushTab} = useContext(SidebarContext);
   const menuItems = [
     {cat:'main', name:'Dashboard', link:'/', icon:<RxDashboard/> },
     {cat:'main', name:'Report', icon:<TbReportSearch/>, 
@@ -59,7 +59,7 @@ export default function SideBar() {
         {/* menu list items */}
         <ul className='h-5/6 select-none overflow-y-auto scrollbar-none hover:scrollbar-thin scrollbar-thumb-orange-600'>
             {menuItems.map((item, i)=>(
-                <MenuItems key={i} item={item}/>
+                <MenuItems key={i} item={item} handlePushTab={handlePushTab}/>
               ))}
         </ul>
     </nav>
