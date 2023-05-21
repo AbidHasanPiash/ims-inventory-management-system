@@ -14,13 +14,11 @@ export default function RootLayout({ children }) {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const [headerTab, setHeaderTab] = useState([{ name: '', link: '' }]);
   const handlePushTab = (name, link) => {
-    // Remove blank objects from headerTab
-    const filteredTab = headerTab.filter((tab) => tab.name !== '' || tab.link !== '');
     const newData = { name: name, link: link };
-    // Check if newData already exists in headerTab
+    if (name === "Dashboard") return;
     const isDuplicate = headerTab.some((tab) => tab.name === name && tab.link === link);
     if (!isDuplicate) {
-      setHeaderTab([...filteredTab, newData]);
+      setHeaderTab([...headerTab, newData]);
     }
   };
   const handleRemoveTab = (index) => {
@@ -38,7 +36,7 @@ export default function RootLayout({ children }) {
           <SideBar/>
           <main className='w-full min-h-screen'>
             <Header/>
-            <div className='overflow-y-auto scrollbar-thin scrollbar-thumb-orange-600'>
+            <div className='max-h-screen overflow-y-auto scrollbar-thin scrollbar-thumb-orange-600'>
               {children}
             </div>
           </main>

@@ -2,7 +2,7 @@
 import React from 'react'
 import { BiUpArrowAlt } from 'react-icons/bi';
 import {FaChartLine} from 'react-icons/fa'
-import {AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer} from 'recharts';
+import {AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend} from 'recharts';
 
 export default function SalesWeekly() {
     const today = new Date(); // Get the current date
@@ -50,6 +50,7 @@ export default function SalesWeekly() {
             <XAxis dataKey="sale" />
             <YAxis />
             <Tooltip />
+            <Legend />
             <Area type="monotone" dataKey="Pharmacy" stackId="1" stroke="#8884d8" fill="#8884d8" />
             <Area type="monotone" dataKey="NonPharmacy" stackId="1" stroke="#82ca9d" fill="#82ca9d" />
         </AreaChart>

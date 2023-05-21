@@ -3,6 +3,8 @@ import { BiPurchaseTagAlt } from "react-icons/bi";
 import { MdOutlineAssignmentReturned, MdAddTask } from "react-icons/md";
 import InfoCard from "./components/dashboard/InfoCard";
 import SalesWeekly from "./components/dashboard/SalesWeekly";
+import SalesMonthly from "./components/dashboard/SalesMonthly";
+import SalesRealtime from "./components/dashboard/SalesRealtime";
 
 export default function Home() {
   return (
@@ -16,6 +18,8 @@ export default function Home() {
       </div>
       <div className="grid xl:grid-cols-2 grid-cols-1 gap-x-3 gap-y-6 m-3 mb-20">
         <SalesWeekly/>
+        <SalesMonthly/>
+        <SalesRealtime/>
       </div>
     </div>
   );

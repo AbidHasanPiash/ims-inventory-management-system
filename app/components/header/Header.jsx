@@ -5,13 +5,14 @@ import { SidebarContext } from '../../contexts/SidebarContext';
 import { fullScreen } from './FullScreen'
 import { RiMenuFoldFill, RiMenuUnfoldFill, RiMessageLine, RiSearch2Line } from 'react-icons/ri'
 import { BiBell, BiExpand, BiCollapse } from 'react-icons/bi'
-import Notification from '../dashboard/Notification';
+import Notification from './Notification';
 import Messages from './Messages';
 
 export default function Header() {
     const path = usePathname ();
     const [isFullScreen, setFullScreen] = useState(false);
     const {isSidebarOpen, setSidebarOpen, headerTab, handleRemoveTab} = useContext(SidebarContext);
+    const headerTabToRender = headerTab.slice(1);
     const [isNotiOpen, setIsNotiOpen] = useState(false);
     const [isMesgOpen, setIsMesgOpen] = useState(false);
     return (
@@ -24,8 +25,8 @@ export default function Header() {
                         </button>
                         <Link href={'/'}>Home</Link>
                     </div>
-                    {headerTab.length >=1 && <div className='flex space-x-3'>
-                        {headerTab?.map((tab, i)=>(
+                    <div className='flex space-x-3'>
+                        {headerTabToRender?.map((tab, i)=>(
                             <Link key={i} href={`${tab?.link}`} className={`${tab.link === path ? 'bg-blue-500/20' : 'bg-primary hover:bg-blue-500/20'}
                                 group flex items-center justify-center gap-3 px-3 py-1 cursor-pointer hover:shadow-lg rounded-full`}
                             >
@@ -35,7 +36,7 @@ export default function Header() {
                                 </span>}
                             </Link>
                         ))}
-                    </div>}
+                    </div>
                 </div>
                 <div className='flex items-center justify-center space-x-3 px-6 bg-blue-500/20 rounded-l-full cursor-pointer'>
                     <button className='flex items-center justify-center w-10 h-10 hover:bg-blue-400/30 rounded-lg transition-colors duration-500'> <RiSearch2Line size={20}/> </button>
