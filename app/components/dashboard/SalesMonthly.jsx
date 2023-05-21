@@ -9,7 +9,6 @@ export default function SalesMonthly() {
     const months = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
     const month = today.getMonth();
     const updateMonth = [...months.slice(month), ...months.slice(0, month)]
-    console.log(month);
       const data = [
           { name: updateMonth[5], Pharmacy: 4000000, NonPharmacy: 2400000 },
           { name: updateMonth[6], Pharmacy: 3000000, NonPharmacy: 1398000 },
@@ -20,7 +19,7 @@ export default function SalesMonthly() {
           { name: updateMonth[11], Pharmacy: 3490000, NonPharmacy: 4300000 },
         ];
   return (
-    <div className='shadow-xl border rounded-lg bg-gray-200 text-xs md:text-sm xl:text-md'>
+    <div className='shadow-xl border rounded-lg bg-gray-100 text-xs md:text-sm xl:text-md'>
     {/* heading section */}
     <div className="m-5 text-gray-500">
       <div className='flex items-center justify-between mb-10'>

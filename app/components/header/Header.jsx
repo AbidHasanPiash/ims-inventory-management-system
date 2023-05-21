@@ -12,21 +12,22 @@ export default function Header() {
     const path = usePathname ();
     const [isFullScreen, setFullScreen] = useState(false);
     const {isSidebarOpen, setSidebarOpen, headerTab, handleRemoveTab} = useContext(SidebarContext);
-    const headerTabToRender = headerTab.slice(1);
     const [isNotiOpen, setIsNotiOpen] = useState(false);
     const [isMesgOpen, setIsMesgOpen] = useState(false);
     return (
-        <header className='w-full h-14 bg-gray-200 flex items-center justify-center'>
+        <header className='w-full h-14 bg-gray-100 flex items-center justify-center shadow-md'>
             <div className='w-full flex justify-between'>
                 <div className='h-14 flex items-center gap-3'>
                     <div className='h-full px-3 gap-5 flex items-center justify-center bg-blue-500/20 rounded-r-full'>
-                        <button onClick={()=>setSidebarOpen((prev)=>!prev)}>
+                        <button
+                            className='flex items-center justify-center w-10 h-10 hover:bg-blue-400/30 rounded-lg transition-colors duration-500' 
+                            onClick={()=>setSidebarOpen((prev)=>!prev)}>
                             {isSidebarOpen ? <RiMenuFoldFill size={20}/> : <RiMenuUnfoldFill size={20}/>}
                         </button>
                         <Link href={'/'}>Home</Link>
                     </div>
                     <div className='flex space-x-3'>
-                        {headerTabToRender?.map((tab, i)=>(
+                        {headerTab?.slice(1).map((tab, i)=>(
                             <Link key={i} href={`${tab?.link}`} className={`${tab.link === path ? 'bg-blue-500/20' : 'bg-primary hover:bg-blue-500/20'}
                                 group flex items-center justify-center gap-3 px-3 py-1 cursor-pointer hover:shadow-lg rounded-full`}
                             >

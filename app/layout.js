@@ -31,7 +31,7 @@ export default function RootLayout({ children }) {
       <head>
         <title>{metadata.title}</title>
       </head>
-      <body className='flex bg-primary text-secondary overflow-hidden'>
+      <body className='flex bg-white text-secondary overflow-hidden'>
         <SidebarContext.Provider value={{isSidebarOpen, setSidebarOpen, headerTab, handlePushTab, handleRemoveTab}}>
           <SideBar/>
           <main className='w-full min-h-screen'>

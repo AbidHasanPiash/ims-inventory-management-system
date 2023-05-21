@@ -19,7 +19,7 @@ export default function SalesWeekly() {
       { sale: updateDays[0], Pharmacy: 4700, NonPharmacy: 6400 },
     ];
   return (
-    <div className='shadow-xl border rounded-lg bg-gray-200 text-xs md:text-sm xl:text-md'>
+    <div className='shadow-xl border rounded-lg bg-gray-100 text-xs md:text-sm xl:text-md'>
     {/* heading section */}
     <div className="m-5 text-gray-500">
       <div className='flex items-center justify-between mb-10'>

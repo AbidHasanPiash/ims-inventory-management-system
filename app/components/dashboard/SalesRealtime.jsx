@@ -12,7 +12,7 @@ export default function SalesRealtime() {
         { token: 210, counter: 'M', salesmaneName: "Rafsan", price: 106, item: 4, time: "11:05:23"},
       ]
   return (
-    <div className="shadow-xl border rounded-lg bg-gray-200 text-xs md:text-sm xl:text-md">
+    <div className="shadow-xl border rounded-lg bg-gray-100 text-xs md:text-sm xl:text-md">
     {/* heading section */}
     <div className="m-5 text-gray-500">
       <div className='flex items-center justify-between mb-10'>
