@@ -14,8 +14,14 @@ export default function RootLayout({ children }) {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const [headerTab, setHeaderTab] = useState([{ name: '', link: '' }]);
   const handlePushTab = (name, link) => {
+    // Remove blank objects from headerTab
+    const filteredTab = headerTab.filter((tab) => tab.name !== '' || tab.link !== '');
     const newData = { name: name, link: link };
-    setHeaderTab([...headerTab, newData]);
+    // Check if newData already exists in headerTab
+    const isDuplicate = headerTab.some((tab) => tab.name === name && tab.link === link);
+    if (!isDuplicate) {
+      setHeaderTab([...filteredTab, newData]);
+    }
   };
   const handleRemoveTab = (index) => {
     const updatedTab = [...headerTab];
