@@ -33,12 +33,12 @@ export default function RootLayout({ children }) {
       <head>
         <title>{metadata.title}</title>
       </head>
-      <body className='flex bg-primary text-secondary'>
+      <body className='flex bg-primary text-secondary overflow-hidden'>
         <SidebarContext.Provider value={{isSidebarOpen, setSidebarOpen, headerTab, handlePushTab, handleRemoveTab}}>
           <SideBar/>
           <main className='w-full min-h-screen'>
             <Header/>
-            <div className=''>
+            <div className='overflow-y-auto scrollbar-thin scrollbar-thumb-orange-600'>
               {children}
             </div>
           </main>
